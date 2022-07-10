@@ -1,0 +1,139 @@
+@import '../../styles/variables';
+
+$hoverBorderColor: $textColor;
+
+@mixin input-focus {
+    background-color: $bgColor !important;
+    box-shadow: none !important;
+    border-color: $focusedBorderColor;
+    color: $textColor;
+}
+
+@mixin input-placeholder {
+    color: $textColor;
+    letter-spacing: 0.15px;
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+// Form input container
+
+.input {
+    margin: {
+        bottom: 40px;
+    }
+    position: relative;
+}
+
+.form-control:hover:not(:focus) {
+    border-color: $hoverBorderColor !important;
+}
+
+.form-control:not(.date):focus {
+    @include input-focus;
+    padding: {
+        left: 12px !important;
+    }
+}
+
+.form-control {
+    color: $textColor;
+    background-color: $bgColor;
+    min-width: 200px;
+    width: 337px;
+    height: 58px;
+    padding: {
+        left: 9px;
+    }
+    border : {
+        color: $activeBorderColor;
+        width: 3px;
+        radius: 8px;
+    };
+    transition: all 0.15s ease-in 0s;
+}
+
+.form-label {
+    color: $textColor;
+    position: absolute;
+    top: -7.5px;
+    left: 12px;
+    font-size: 12px;
+    background-color: $bgColor;
+    letter-spacing: 0.4px;
+    padding: 0 4px;
+    line-height: 150%;
+}
+
+// Input placeholder
+
+.form-control::-webkit-input-placeholder {
+    @include input-placeholder;
+  }
+  
+.form-control:-ms-input-placeholder {
+    @include input-placeholder;
+}
+  
+.form-control::placeholder {
+    @include input-placeholder;
+}
+
+// Password criteria box
+
+.visible {
+    opacity: 1 !important;
+}
+
+.criteriaContainer {
+    pointer-events: none;
+    margin-top: -20px;
+    background-color: $criteriaContainerBgColor;
+    position: absolute;
+    width: 335px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.1s ease-out;
+    z-index: 1;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.criteriaContainer>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.textContainer {
+    color: $textColor;
+    font-size: 14px;
+    padding: 8px 16px 8px 0;
+    letter-spacing: 0.25px;
+}
+
+.vector {
+    margin-right: 12px;
+    height: 24px;
+    width: 24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 2px;
+}
+
+.checkmarkOff {
+    height:20px;
+    width:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding-top: 1px;
+    border: {
+        width: 2px;
+        color: #565656;
+        style: solid;
+        radius: 50%;
+    }
+}

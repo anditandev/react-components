@@ -1,0 +1,249 @@
+@import '../style.scss';
+@import '../../../styles/variables';
+
+// General set up
+
+.MuiButtonBase-root {
+    letter-spacing: 0.15px !important;
+    color: $textColor!important;
+}
+
+.MuiTypography-root {
+    font-family: 'Inter' !important;
+    color: $textColor !important;
+    text-transform: none !important;
+}
+
+// Calendar Picker Input
+
+.date.form-control {
+    background-color: $bgColor;
+    box-shadow: none;
+    color: $textColor;
+    caret-color: transparent;
+}
+
+.date.form-control:focus {
+    border-color: $textColor !important;
+}
+
+// Calendar Picker container
+
+.picker {
+    display: inline-block;
+    border: {
+        radius: 10px;
+    };
+    margin-top: 20px;
+    position: absolute;
+    overflow: hidden;
+    opacity: 0;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.1s ease-out;
+    margin-bottom:120px !important;
+}
+
+.pickerOpen {
+    @include input-focus;
+    border: {
+        color: $textColor !important;
+    }
+}
+
+// Toolbar
+
+.MuiPickersToolbar-root {
+    margin: 0px !important;
+    padding: {
+        top: 17px !important;
+        bottom: 11px !important;
+        left: 24px !important;
+    }
+    height: 100px !important;
+}
+
+.MuiPickersToolbar-root>.MuiTypography-overline {
+    line-height: 150% !important;
+}
+
+.MuiDatePickerToolbar-title {
+    font-weight: 700 !important;
+    line-height: 137.5% !important;
+    font-size: 32px !important;
+}
+
+.MuiCalendarPicker-root>div:first-child {
+    padding: 0 !important;
+    margin: {
+        top: 12px !important;
+        bottom: 12px !important;
+    }
+    height: 48px !important;
+}
+
+.MuiCalendarPicker-root>div:first-child>div:first-child {
+    position: absolute !important;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.MuiPickersToolbar-penIconButton {
+    display: none !important;
+}
+
+// Calendar header
+
+.MuiPickersArrowSwitcher-button {
+    height:48px;
+    width:48px;
+}
+
+.MuiPickersArrowSwitcher-root {
+    justify-content: space-between;
+    width: 100%;
+    background-color: $bgColor !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.PrivatePickersSlideTransition-root {
+    min-height: min-content !important;
+    height: 230px !important;
+    overflow-y: hidden;
+}
+
+// Target calendar weekdays
+
+.MuiCalendarPicker-viewTransitionContainer>div:first-child {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+// Target calendar weekdays text
+
+.MuiCalendarPicker-viewTransitionContainer>div:first-child>div>.MuiTypography-caption {
+    font-size: 11px !important;
+    opacity: 0.5 !important;
+    height:fit-content;
+    margin: 0 3px 12px 3px !important;
+}
+
+.MuiCalendarPicker-viewTransitionContainer {
+    height: 268px;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.MuiCalendarPicker-viewTransitionContainer::-webkit-scrollbar {
+    display: none !important; 
+}
+
+.MuiPickerStaticWrapper-root>* {
+    background-color: $bgColor !important;
+}
+
+.MuiCalendarPicker-root {
+    background-color: $bgColor !important;
+    color: $textColor;
+}
+
+// Target row of days within calendar picker
+.PrivatePickersSlideTransition-root>div[role=grid]>div[role=row] {
+    margin: 0;
+}
+
+.MuiDatePickerToolbar-root > .MuiTypography-overline {
+    font-size: 16px !important;
+    letter-spacing: 0px !important;
+}
+
+// Day Picker button
+
+.MuiPickersDay-today {
+    overflow: hidden;
+    border: {
+        width: 1px !important;
+        color: $focusedBorderColor !important;
+    };
+}
+
+.MuiPickersDay-root {
+    background-color: transparent !important;
+    letter-spacing: 0.15px !important;
+    font-family: 'Inter' !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    margin: 0 3px !important;
+}
+
+.MuiPickersDay-dayOutsideMonth {
+    opacity: 0.5;
+}
+.MuiPickersDay-root:hover, .PrivatePickersYear-yearButton:hover {
+    background-color: #fff !important;
+    color: #080808 !important;
+    opacity: 1;
+    border-width: 0 !important;
+}
+
+.Mui-selected {
+    background-color: $focusedBorderColor !important;
+    color: #fff !important;
+    opacity: 1;
+}
+
+// Year picker container
+
+.MuiYearPicker-root {
+    margin: 0 !important;
+    padding: 0 20px !important;
+}
+
+// Year picker button
+
+.PrivatePickersYear-root {
+    flex-basis: 25% !important;
+    padding: 12px 0 !important;
+}
+
+.PrivatePickersYear-yearButton:hover {
+    border-radius: 0px !important;
+}
+
+.PrivatePickersYear-yearButton {
+    border-radius: 2px !important;
+    font-size: 16px !important;
+    line-height: 150% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 24px !important;
+    font-family: 'Inter' !important;
+    width: 61px !important;
+}
+
+// Picker Dialog action
+
+.MuiDialogActions-root {
+    margin-top: -3px !important;
+    padding: {
+        top: 0 !important;
+        right: 27px !important;
+        bottom: 11px !important;
+        left: 0 !important;
+    }
+}
+
+.MuiDialogActions-root > button {
+    margin-left: 38px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    line-height: 24px !important;
+    font-size: 14px !important;
+    font-family: 'Inter';
+}
+
+.MuiDialogContent-root {
+    overflow: hidden;
+}

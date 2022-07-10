@@ -5,26 +5,28 @@ import CalendarPicker from './CalendarPicker';
 import { ClickAwayListener } from '@mui/material';
 
 const DateInput = () => {
-    const [isPickerOpen, setPickerOpen] = useState(false)
-    const [dateValue, setDateValue] = useState<Date | undefined>(undefined)
+    const [isPickerOpen, setPickerOpen] = useState(false);
+    const [dateValue, setDateValue] = useState<Date | undefined>(undefined);
 
     const handleClick = (e:MouseEvent<HTMLInputElement>) => {
       setPickerOpen(isPickerOpen => !isPickerOpen)
       e.currentTarget.blur()
-    }
+    };
 
-    const handleBlur = () => setPickerOpen(false)
+    const handleBlur = () => setPickerOpen(false);
     const onPickerClose = (date?:Date) => {
       handleBlur()
       if (date !== undefined)
           setDateValue(date)
-    }
+    };
 
     const handleKeyDown = (e:any) => {
       e.preventDefault()
-    }
+    };
 
-    const dateString = dateValue !== undefined ? dateValue.toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'}) : undefined
+    const dateString = dateValue
+    ? dateValue.toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'}) 
+    : undefined;
 
     return (
         <ClickAwayListener onClickAway={handleBlur} >
@@ -47,4 +49,4 @@ const DateInput = () => {
     )
 }
 
-export default DateInput
+export default DateInput;

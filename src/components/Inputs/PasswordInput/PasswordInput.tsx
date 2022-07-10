@@ -6,30 +6,30 @@ import { PasswordCriteriaType } from '../../../types';
 import Criterias from './Criterias';
 
 const PasswordInput = () => {
-    const [criterias, setCriterias] = useState(getPasswordCriterias())
-    const [isCriteriaShown, setIsCriteriaShown] = useState(false)
+    const [criterias, setCriterias] = useState(getPasswordCriterias());
+    const [isCriteriaShown, setIsCriteriaShown] = useState(false);
     
     const focusHandler = (e:FocusEvent<HTMLInputElement>) => {
         if (!isCriteriaShown)
             setIsCriteriaShown(true)
-    }
+    };
     
     const blurHandler = (e:FocusEvent<HTMLInputElement>) => {
         if (isCriteriaShown)
             setIsCriteriaShown(false)
-    }
+    };
 
     const handleKeyDown = (e:any) => {
         // Naive approach on preventing space button input
         if (e.key === ' ')
             e.preventDefault()
-    }
+    };
     
     const changeHandler = (e:ChangeEvent<HTMLInputElement>) => {
-        const text = e.target.value
+        const text = e.target.value;
 
         // Prevent unncessary re-render if prev boolean was the same as current boolean
-        let updateState = false
+        let updateState = false;
 
         const newCriteria = [...criterias].reduce((prevArr:PasswordCriteriaType[],item:PasswordCriteriaType) => {
             const newItem = {...item};
@@ -50,7 +50,7 @@ const PasswordInput = () => {
 
         if (updateState)
             setCriterias(newCriteria)
-    }
+    };
 
     return (
         <>
@@ -72,7 +72,7 @@ const PasswordInput = () => {
                 isCriteriaShown={isCriteriaShown}
             />
         </>
-    )
+    );
 }
 
-export default PasswordInput
+export default PasswordInput;

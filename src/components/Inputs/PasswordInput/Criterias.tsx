@@ -23,7 +23,7 @@ const Criterias = (props: Props) => {
                 })
             }
         </div>
-    )
+    );
 }
 
-export default Criterias
+export default Criterias;

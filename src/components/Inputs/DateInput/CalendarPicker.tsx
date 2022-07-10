@@ -34,51 +34,50 @@ const CustomActionBar = (props: ActionBarProps) => {
     )
 }
 
-// Note: 
-// - Heavily modified css
-// - Using reduceAnimations will break the calendar header
-// - TODO: While changing date format for 'monthAndYear'
-// works in this case and will only affect the CalendarPicker component,
-// it might breaks in the future(expecting mui date-picker to expose
-// header component)
+/**
+ * Note:
+ * - Heavily modified css
+ * - Using reduceAnimations will break the calendar header
+ * - TODO: While changing date format for 'monthAndYear'
+ * works in this case and will only affect the CalendarPicker component,
+ * it might break in the future(expecting mui date-picker to expose
+ * header component)
+ */
 
 const CalendarPicker = (props:Props) => {
-    const [dateValue, setDateValue] = useState(props.currentDateValue)
+    const [dateValue, setDateValue] = useState(props.currentDateValue);
     const [currentCalendarView, setCurrentCalendarView] = useState<CalendarPickerView>('day')
 
-    const handleAccept = () => props.closePicker(dateValue)
+    const handleAccept = () => props.closePicker(dateValue);
     const handleCancel = () => {
-      props.closePicker()
+      props.closePicker();
       // Reset date on cancel button press
-      onDateChange(props.currentDateValue !== undefined ? props.currentDateValue : new Date())
-    }
+      onDateChange(props.currentDateValue !== undefined ? props.currentDateValue : new Date());
+    };
 
-    const handleViewChange = (view:CalendarPickerView) => {
-        setCurrentCalendarView(view)
-    }
-
-    const onDateChange = (value:any) => {
-        setDateValue(value)
-    }
+    const handleViewChange = (view:CalendarPickerView) => setCurrentCalendarView(view);
+    const onDateChange = (value:any) => setDateValue(value);
 
     const handleLeftArrowButton = (e:any) => {
-      const currentYear = dateValue !== undefined ? dateValue : new Date()
-      const lastYear = currentYear.setFullYear(currentYear.getFullYear() - 1)
-      setDateValue(new Date(lastYear))
-    }
+      const currentYear = dateValue !== undefined ? dateValue : new Date();
+      const lastYear = currentYear.setFullYear(currentYear.getFullYear() - 1);
+      setDateValue(new Date(lastYear));
+    };
 
     const handleRightArrowButton = (e:any) => {
-      const currentDate = dateValue !== undefined ? dateValue : new Date()
-      const nextYear = currentDate.setFullYear(currentDate.getFullYear() + 1)
-      setDateValue(new Date(nextYear))
-    }
+      const currentDate = dateValue !== undefined ? dateValue : new Date();
+      const nextYear = currentDate.setFullYear(currentDate.getFullYear() + 1);
+      setDateValue(new Date(nextYear));
+    };
 
     return (
         <div className={`picker ${props.isPickerOpen ? 'visible' : ''}`}>
             <LocalizationProvider 
                 dateAdapter={DateAdapter}
                 dateFormats={{
-                  monthAndYear: currentCalendarView === 'year' ? 'yyyy' : 'MMMM yyyy'
+                  monthAndYear: currentCalendarView === 'year' 
+                  ? 'yyyy' 
+                  : 'MMMM yyyy'
                 }}>
                 <StaticDatePicker
                     displayStaticWrapperAs='mobile'
@@ -93,15 +92,16 @@ const CalendarPicker = (props:Props) => {
                         ),
                     }}
                     componentsProps={
-                      currentCalendarView === 'year' ?
-                      {
+                      currentCalendarView === 'year' 
+                      ? {
                           leftArrowButton:{
                             onClick:handleLeftArrowButton
                           },
                           rightArrowButton:{
                             onClick:handleRightArrowButton
                           }
-                      } : undefined
+                      } 
+                      : undefined
                     }
                     onChange={onDateChange}
                     onViewChange={handleViewChange}
@@ -118,7 +118,7 @@ const CalendarPicker = (props:Props) => {
 }
 
 const equalValue = (prevValue:Props, nextValue:Props) => {
-	return prevValue.isPickerOpen === nextValue.isPickerOpen
+	return prevValue.isPickerOpen === nextValue.isPickerOpen;
 }
 
-export default memo(CalendarPicker,equalValue)
+export default memo(CalendarPicker,equalValue);

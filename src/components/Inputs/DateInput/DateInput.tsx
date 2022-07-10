@@ -46,7 +46,7 @@ const DateInput = () => {
               />
           </div>
         </ClickAwayListener>
-    )
+    );
 }
 
 export default DateInput;

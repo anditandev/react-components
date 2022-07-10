@@ -6,7 +6,7 @@ class CustomString extends String {
   charAt(_: number): any {
     return {
       toUpperCase: () => this.valueOf()
-    }
+    };
   }
 }
 

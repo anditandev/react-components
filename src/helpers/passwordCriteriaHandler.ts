@@ -6,17 +6,17 @@ export const getPasswordCriterias = () => {
             id: index,
             desc: value,
             isSatisfied: false
-        }
+        };
 
-        return [...arr,item]
+        return [...arr,item];
     },[]);
 }
 
-export const getCriteriaIndex = (descText:PasswordCriteriaStrings, arr:PasswordCriteriaType[]) => {
+export const getCriteriaIndex = (descText:PasswordCriteriaStrings, arr:PasswordCriteriaType[],) => {
     return arr.findIndex(item => descText === item.desc);
 }
 
-export const testPasswordCriteria = (pass:string, type:PasswordCriteriaStrings) => {
+export const testPasswordCriteria = (pass:string, type:PasswordCriteriaStrings,) => {
     switch (type) {
         case PasswordCriteriaStrings.C1: {
             const pattern = new RegExp('[A-Z]');

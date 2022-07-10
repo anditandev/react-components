@@ -9,6 +9,6 @@ export default class App extends PureComponent {
             <Container className={'p-3'} fluid>
                 <MainForm />
             </Container>
-        )
+        );
     };
 }

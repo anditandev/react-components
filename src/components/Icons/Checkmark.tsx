@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-interface Props{
+interface Props {
     isSatisfied: boolean;
 }
 

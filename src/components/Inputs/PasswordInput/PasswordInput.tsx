@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import '../style.scss';
 import Form from 'react-bootstrap/Form';
 import { getPasswordCriterias, testPasswordCriteria } from '../../../helpers/passwordCriteriaHandler';
@@ -9,12 +9,12 @@ const PasswordInput = () => {
     const [criterias, setCriterias] = useState(getPasswordCriterias());
     const [isCriteriaShown, setIsCriteriaShown] = useState(false);
     
-    const focusHandler = (e:FocusEvent<HTMLInputElement>) => {
+    const focusHandler = (_:any) => {
         if (!isCriteriaShown)
             setIsCriteriaShown(true)
     };
     
-    const blurHandler = (e:FocusEvent<HTMLInputElement>) => {
+    const blurHandler = (_:any) => {
         if (isCriteriaShown)
             setIsCriteriaShown(false)
     };
@@ -33,8 +33,10 @@ const PasswordInput = () => {
 
         const newCriteria = [...criterias].reduce((prevArr:PasswordCriteriaType[],item:PasswordCriteriaType) => {
             const newItem = {...item};
-            // TODO: Research whether passing sensitive string to imported function
-            // expose any security threat in web security from client side
+            /**
+             * TODO: Research whether passing sensitive string to imported function
+             * expose any security threat in web security from client side
+             */
             const result = testPasswordCriteria(text,item.desc);
             if (result && !item.isSatisfied) {
                 updateState = true;
@@ -42,11 +44,11 @@ const PasswordInput = () => {
             } else if (!result && item.isSatisfied) {
                 updateState = true;
                 newItem.isSatisfied = false;
-            }
+            };
             prevArr.push(newItem);
 
             return prevArr;
-        }, [])
+        }, []);
 
         if (updateState)
             setCriterias(newCriteria)

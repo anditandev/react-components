@@ -4,7 +4,7 @@ import { CalendarPickerView, StaticDatePicker } from '@mui/x-date-pickers';
 import { DateAdapter } from './CustomDateAdapter';
 import { Button, DialogActions } from '@mui/material';
 
-interface Props{
+interface Props {
     currentDateValue: Date | undefined;
     isPickerOpen: boolean;
     closePicker: (date?:Date) => void;
@@ -31,14 +31,14 @@ const CustomActionBar = (props: ActionBarProps) => {
           OK
         </Button>
       </DialogActions>
-    )
+    );
 }
 
 /**
  * Note:
  * - Heavily modified css
  * - Using reduceAnimations will break the calendar header
- * - TODO: While changing date format for 'monthAndYear'
+ * FIXME: While changing date format for 'monthAndYear'
  * works in this case and will only affect the CalendarPicker component,
  * it might break in the future(expecting mui date-picker to expose
  * header component)
@@ -46,7 +46,7 @@ const CustomActionBar = (props: ActionBarProps) => {
 
 const CalendarPicker = (props:Props) => {
     const [dateValue, setDateValue] = useState(props.currentDateValue);
-    const [currentCalendarView, setCurrentCalendarView] = useState<CalendarPickerView>('day')
+    const [currentCalendarView, setCurrentCalendarView] = useState<CalendarPickerView>('day');
 
     const handleAccept = () => props.closePicker(dateValue);
     const handleCancel = () => {
@@ -58,13 +58,13 @@ const CalendarPicker = (props:Props) => {
     const handleViewChange = (view:CalendarPickerView) => setCurrentCalendarView(view);
     const onDateChange = (value:any) => setDateValue(value);
 
-    const handleLeftArrowButton = (e:any) => {
+    const handleLeftArrowButton = (_:any) => {
       const currentYear = dateValue !== undefined ? dateValue : new Date();
       const lastYear = currentYear.setFullYear(currentYear.getFullYear() - 1);
       setDateValue(new Date(lastYear));
     };
 
-    const handleRightArrowButton = (e:any) => {
+    const handleRightArrowButton = (_:any) => {
       const currentDate = dateValue !== undefined ? dateValue : new Date();
       const nextYear = currentDate.setFullYear(currentDate.getFullYear() + 1);
       setDateValue(new Date(nextYear));
